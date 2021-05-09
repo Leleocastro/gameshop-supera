@@ -12,9 +12,6 @@ class ProductDetailScreen extends StatelessWidget {
     final Cart cart = Provider.of<Cart>(context, listen: false);
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(product.title),
-      // ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

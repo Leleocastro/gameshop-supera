@@ -26,8 +26,18 @@ class Products with ChangeNotifier {
 
     if (data != null) {
       _items = data.map<Product>((json) => Product.fromJson(json)).toList();
+
       notifyListeners();
     }
     return Future.value();
+  }
+
+  void alphabeticOrderBy() {
+    _items.sort((a, b) {
+      var aName = a.name;
+      var bName = b.name;
+      return aName.compareTo(bName);
+    });
+    notifyListeners();
   }
 }

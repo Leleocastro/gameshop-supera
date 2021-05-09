@@ -46,6 +46,18 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/data/products.json
+    - assets/images/call-of-duty-infinite-warfare.png
+    - assets/images/call-of-duty-wwii.png
+    - assets/images/fifa-18.png
+    - assets/images/horizon-zero-dawn.png
+    - assets/images/mortal-kombat-xl.png
+    - assets/images/shards-of-darkness.png
+    - assets/images/super-mario-odyssey.png
+    - assets/images/terra-media-sombras-de-mordor.png
+    - assets/images/the-witcher-iii-wild-hunt.png
+    - assets/images/product-placeholder.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

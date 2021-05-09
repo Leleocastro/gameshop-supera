@@ -41,27 +41,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       appBar: AppBar(
         title: Text('Minha Loja'),
         actions: [
-          PopupMenuButton(
-            onSelected: (FilterOptions selectedValue) {
-              // setState(() {
-              //   if (selectedValue == FilterOptions.Favorite) {
-              //     _showFavoriteOnly = true;
-              //   } else {
-              //     _showFavoriteOnly = false;
-              //   }
-              // });
-            },
+          IconButton(
             icon: Icon(Icons.filter_alt),
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: Text('Somente Favoritos'),
-                value: FilterOptions.Favorite,
-              ),
-              PopupMenuItem(
-                child: Text('Todos'),
-                value: FilterOptions.All,
-              ),
-            ],
+            onPressed: () {
+              Provider.of<Products>(context, listen: false).alphabeticOrderBy();
+            },
           ),
           Consumer<Cart>(
             child: IconButton(

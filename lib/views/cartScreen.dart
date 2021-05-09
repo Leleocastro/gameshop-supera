@@ -22,6 +22,7 @@ class CartScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
