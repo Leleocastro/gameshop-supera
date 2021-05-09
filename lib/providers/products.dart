@@ -32,12 +32,63 @@ class Products with ChangeNotifier {
     return Future.value();
   }
 
-  void alphabeticOrderBy() {
-    _items.sort((a, b) {
-      var aName = a.name;
-      var bName = b.name;
-      return aName.compareTo(bName);
-    });
-    notifyListeners();
+  bool alphabeticOrderBy(bool isAscending) {
+    if (isAscending) {
+      _items.sort((a, b) {
+        var aName = a.name;
+        var bName = b.name;
+        return aName.compareTo(bName);
+      });
+      notifyListeners();
+      return false;
+    } else {
+      _items.sort((a, b) {
+        var aName = a.name;
+        var bName = b.name;
+        return -aName.compareTo(bName);
+      });
+      notifyListeners();
+      return true;
+    }
+  }
+
+  bool priceOrderBy(bool isAscending) {
+    if (isAscending) {
+      _items.sort((a, b) {
+        var aPrice = a.price;
+        var bPrice = b.price;
+        return aPrice.compareTo(bPrice);
+      });
+      notifyListeners();
+      return false;
+    } else {
+      _items.sort((a, b) {
+        var aPrice = a.price;
+        var bPrice = b.price;
+        return -aPrice.compareTo(bPrice);
+      });
+      notifyListeners();
+      return true;
+    }
+  }
+
+  bool scoreOrderBy(bool isAscending) {
+    if (isAscending) {
+      _items.sort((a, b) {
+        var aScore = a.score;
+        var bScore = b.score;
+        return aScore.compareTo(bScore);
+      });
+      notifyListeners();
+      return false;
+    } else {
+      _items.sort((a, b) {
+        var aScore = a.score;
+        var bScore = b.score;
+        return -aScore.compareTo(bScore);
+      });
+      notifyListeners();
+      return true;
+    }
   }
 }

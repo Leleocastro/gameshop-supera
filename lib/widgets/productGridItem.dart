@@ -20,13 +20,47 @@ class ProductGridItem extends StatelessWidget {
               arguments: product,
             );
           },
-          child: Hero(
-            tag: product.id,
-            child: FadeInImage(
-              placeholder: AssetImage('assets/images/product-placeholder.png'),
-              image: AssetImage('assets/images/${product.image}'),
-              fit: BoxFit.cover,
-            ),
+          child: Stack(
+            fit: StackFit.passthrough,
+            children: [
+              Hero(
+                tag: product.id,
+                child: FadeInImage(
+                  placeholder:
+                      AssetImage('assets/images/product-placeholder.png'),
+                  image: AssetImage('assets/images/${product.image}'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  width: 60,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    color: Colors.indigoAccent,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(product.score.toString()),
+                        Icon(
+                          Icons.star,
+                          color: Colors.white,
+                          size: 17,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         footer: GridTileBar(

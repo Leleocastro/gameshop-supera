@@ -18,7 +18,7 @@ class Badge extends StatelessWidget {
       children: [
         child,
         Positioned(
-          right: 8,
+          right: 0,
           top: 8,
           child: Container(
             padding: EdgeInsets.all(2),
