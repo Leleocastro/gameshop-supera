@@ -55,6 +55,17 @@ class CartItemWidget extends StatelessWidget {
         );
       },
       onDismissed: (_) {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Produto removido com sucesso!',
+            ),
+            duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
         Provider.of<Cart>(context, listen: false)
             .removeItem(cartItem.productId);
       },
@@ -71,7 +82,35 @@ class CartItemWidget extends StatelessWidget {
               radius: 40,
             ),
             title: Text(cartItem.name),
-            subtitle: Text('Total: R\$ ${cartItem.price * cartItem.quantity}'),
+            subtitle: Row(
+              children: [
+                Text(
+                    'Total: R\$ ${(cartItem.price * cartItem.quantity).toStringAsFixed(2)}'),
+                cartItem.quantity > 1
+                    ? IconButton(
+                        icon: Icon(
+                          Icons.delete_forever_outlined,
+                          size: 15,
+                        ),
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Produto removido com sucesso!',
+                              ),
+                              duration: Duration(
+                                seconds: 2,
+                              ),
+                            ),
+                          );
+                          Provider.of<Cart>(context, listen: false)
+                              .removeSingleItem(cartItem.productId);
+                        },
+                      )
+                    : Text(''),
+              ],
+            ),
             trailing: Text('${cartItem.quantity}x'),
           ),
         ),

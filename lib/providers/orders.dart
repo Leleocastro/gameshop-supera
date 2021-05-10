@@ -64,7 +64,6 @@ class Orders with ChangeNotifier {
     String jsonString = await _carregaOrderJson();
     final data = json.decode(jsonString);
 
-    print(data);
     loadedItems.clear();
     if (data != null) {
       data.forEach((orderData) {
@@ -91,7 +90,6 @@ class Orders with ChangeNotifier {
     }
 
     _items = loadedItems.reversed.toList();
-    print(_items);
     return Future.value();
   }
 
@@ -117,10 +115,14 @@ class Orders with ChangeNotifier {
       }
     ]);
     String jsonString = await _carregaOrderJson();
-    String jsonStringFirst = jsonString.substring(0, jsonString.length - 1);
-    String responseSecond = response.substring(1, response.length - 1);
+    String jsonStringFirst = "";
+    String responseSecond = "";
+    if (jsonString.isNotEmpty) {
+      jsonStringFirst = jsonString.substring(0, jsonString.length - 1);
+      responseSecond = response.substring(1, response.length - 1);
+    }
 
-    await file.writeAsString(jsonString != null
+    await file.writeAsString(jsonString.isNotEmpty
         ? jsonStringFirst + ',' + responseSecond + ']'
         : response);
 

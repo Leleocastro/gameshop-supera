@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
                         SizedBox(width: 10),
                         Chip(
                           label: Text(
-                            'R\$ ${cart.subTotalAmount}',
+                            'R\$ ${cart.subTotalAmount.toStringAsFixed(2)}',
                             style: TextStyle(
                               fontSize: 15,
                               color: Theme.of(context)
@@ -79,7 +79,7 @@ class CartScreen extends StatelessWidget {
                         SizedBox(width: 10),
                         Chip(
                           label: Text(
-                            'R\$ ${cart.totalAmount}',
+                            'R\$ ${cart.totalAmount.toStringAsFixed(2)}',
                             style: TextStyle(
                               fontSize: 18,
                               color: Theme.of(context)
@@ -143,6 +143,17 @@ class _OrderButtonState extends State<OrderButton> {
                 isLoading = false;
               });
               widget.cart.clear();
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Compra realizada com sucesso!',
+                  ),
+                  duration: Duration(
+                    seconds: 2,
+                  ),
+                ),
+              );
               Navigator.of(context).pop();
             },
     );

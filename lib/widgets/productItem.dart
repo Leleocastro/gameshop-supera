@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gameshop_supera/exceptions/errException.dart';
 import 'package:gameshop_supera/providers/product.dart';
-import 'package:gameshop_supera/utils/appRoutes.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
@@ -23,12 +22,7 @@ class ProductItem extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.edit),
               color: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  AppRoutes.PRODUCTFORM,
-                  arguments: product,
-                );
-              },
+              onPressed: () {},
             ),
             IconButton(
               icon: Icon(Icons.delete),

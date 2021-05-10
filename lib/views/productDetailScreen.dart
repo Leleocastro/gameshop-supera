@@ -62,7 +62,7 @@ class ProductDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   width: double.infinity,
                   child: Text(
-                    'Descrição do produto: ${product.name}',
+                    'Score do produto: ${product.score}',
                     textAlign: TextAlign.center,
                   ),
                 ),

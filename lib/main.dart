@@ -6,7 +6,6 @@ import 'package:gameshop_supera/utils/appRoutes.dart';
 import 'package:gameshop_supera/views/cartScreen.dart';
 import 'package:gameshop_supera/views/ordersScreen.dart';
 import 'package:gameshop_supera/views/productDetailScreen.dart';
-import 'package:gameshop_supera/views/productFormScreen.dart';
 import 'package:gameshop_supera/views/productsOverviewScreen.dart';
 import 'package:gameshop_supera/views/productsScreen.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Minha Loja',
+        title: 'Supera GameShop',
         theme: ThemeData(
           primarySwatch: Colors.purple,
           primaryColor: Colors.purple,
@@ -44,7 +43,6 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDERS: (ctx) => OrderScreen(),
           AppRoutes.PRODUCTS: (ctx) => ProductsScreen(),
-          AppRoutes.PRODUCTFORM: (ctx) => ProductFormScreen(),
         },
       ),
     );
