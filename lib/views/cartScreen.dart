@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gameshop_supera/providers/cart.dart';
+import 'package:gameshop_supera/providers/orders.dart';
 import 'package:gameshop_supera/widgets/cartItemWidget.dart';
 import 'package:provider/provider.dart';
 
@@ -135,8 +136,8 @@ class _OrderButtonState extends State<OrderButton> {
               setState(() {
                 isLoading = true;
               });
-              // await Provider.of<Orders>(context, listen: false)
-              //     .addOrder(widget.cart);
+              await Provider.of<Orders>(context, listen: false)
+                  .addOrder(widget.cart);
               setState(() {
                 isLoading = false;
               });

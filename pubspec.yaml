@@ -26,6 +26,7 @@ dependencies:
   provider: ^5.0.0
   intl: ^0.16.1
   flutter_svg: ^0.21.0+1
+  path_provider: ^2.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -48,6 +49,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/data/products.json
+    - assets/data/orders.json
     - assets/images/call-of-duty-infinite-warfare.png
     - assets/images/call-of-duty-wwii.png
     - assets/images/fifa-18.png

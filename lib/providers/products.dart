@@ -20,7 +20,6 @@ class Products with ChangeNotifier {
   }
 
   Future<void> loadProducts() async {
-    // print(_url);
     String jsonString = await _carregaProdutoJson();
     final data = json.decode(jsonString);
 

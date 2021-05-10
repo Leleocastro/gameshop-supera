@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:gameshop_supera/providers/cart.dart';
+import 'package:path_provider/path_provider.dart';
 
 class Order {
   final String id;
@@ -30,18 +34,45 @@ class Orders with ChangeNotifier {
     return _items.length;
   }
 
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/orders.json');
+  }
+
+  Future<String> _carregaOrderJson() async {
+    try {
+      final file = await _localFile;
+
+      // Read the file.
+      String contents = await file.readAsString();
+
+      return contents;
+    } catch (e) {
+      // If encountering an error, return empty.
+      return '';
+    }
+  }
+
   Future<void> loadOrders() async {
     List<Order> loadedItems = [];
 
-    // print(_url);
-    Map<String, dynamic> data = json.decode('json vem aqui');
+    String jsonString = await _carregaOrderJson();
+    final data = json.decode(jsonString);
+
+    print(data);
     loadedItems.clear();
     if (data != null) {
-      data.forEach((orderId, orderData) {
+      data.forEach((orderData) {
         loadedItems.add(
           Order(
-            id: orderId,
-            total: orderData['total'].toDouble(),
+            id: orderData['id'],
+            total: orderData['total'],
             date: DateTime.parse(orderData['date']),
             products: (orderData['products'] as List<dynamic>).map((item) {
               return CartItem(
@@ -61,38 +92,33 @@ class Orders with ChangeNotifier {
     }
 
     _items = loadedItems.reversed.toList();
+    print(_items);
     return Future.value();
   }
 
   Future<void> addOrder(Cart cart) async {
+    final file = await _localFile;
     final date = DateTime.now();
-    // final response = await http.post(
-    //   'mudar isso aqui',
-    //   body: json.encode({
-    //     'total': cart.totalAmount,
-    //     'date': date.toIso8601String(),
-    //     'products': cart.items.values
-    //         .map((cartItem) => {
-    //               'id': cartItem.id,
-    //               'productId': cartItem.productId,
-    //               'title': cartItem.title,
-    //               'imageUrl': cartItem.imageUrl,
-    //               'quantity': cartItem.quantity,
-    //               'price': cartItem.price,
-    //             })
-    //         .toList(),
-    //   }),
-    // );
-
-    // _items.insert(
-    //   0,
-    //   Order(
-    //     id: json.decode(response.body)['name'],
-    //     total: cart.totalAmount,
-    //     date: date,
-    //     products: cart.items.values.toList(),
-    //   ),
-    // );
+    final response = json.encode([
+      {
+        'id': Random().toString(),
+        'total': cart.totalAmount,
+        'date': date.toIso8601String(),
+        'products': cart.items.values
+            .map((cartItem) => {
+                  'id': cartItem.id,
+                  'productId': cartItem.productId,
+                  'name': cartItem.name,
+                  'image': cartItem.image,
+                  'quantity': cartItem.quantity,
+                  'price': cartItem.price,
+                  'frete': cartItem.frete,
+                })
+            .toList(),
+      }
+    ]);
+    final resp = await file.writeAsString(response);
+    print(resp);
 
     notifyListeners();
   }

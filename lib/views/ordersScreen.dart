@@ -34,6 +34,7 @@ class OrderScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.error != null) {
+            print(snapshot.error);
             return Center(child: Text('Ocorreu um erro!'));
           } else {
             return Consumer<Orders>(

@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         title: 'Minha Loja',
         theme: ThemeData(
           primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
+          primaryColor: Colors.purple,
+          accentColor: Colors.green,
           brightness: Brightness.dark,
           fontFamily: 'Lato',
         ),
