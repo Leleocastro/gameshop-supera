@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:gameshop_supera/providers/cart.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -117,8 +116,13 @@ class Orders with ChangeNotifier {
             .toList(),
       }
     ]);
-    final resp = await file.writeAsString(response);
-    print(resp);
+    String jsonString = await _carregaOrderJson();
+    String jsonStringFirst = jsonString.substring(0, jsonString.length - 1);
+    String responseSecond = response.substring(1, response.length - 1);
+
+    await file.writeAsString(jsonString != null
+        ? jsonStringFirst + ',' + responseSecond + ']'
+        : response);
 
     notifyListeners();
   }

@@ -26,20 +26,20 @@ class CartScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Sub-Total',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         ),
                         SizedBox(width: 10),
                         Chip(
                           label: Text(
                             'R\$ ${cart.subTotalAmount}',
                             style: TextStyle(
+                              fontSize: 15,
                               color: Theme.of(context)
                                   .primaryTextTheme
-                                  .headline6
+                                  .headline2
                                   .color,
                             ),
                           ),
@@ -48,20 +48,20 @@ class CartScreen extends StatelessWidget {
                       ],
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Frete',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         ),
                         SizedBox(width: 10),
                         Chip(
                           label: Text(
                             'R\$ ${cart.freteAmount}',
                             style: TextStyle(
+                              fontSize: 15,
                               color: Theme.of(context)
                                   .primaryTextTheme
-                                  .headline6
+                                  .headline2
                                   .color,
                             ),
                           ),
@@ -81,6 +81,7 @@ class CartScreen extends StatelessWidget {
                           label: Text(
                             'R\$ ${cart.totalAmount}',
                             style: TextStyle(
+                              fontSize: 18,
                               color: Theme.of(context)
                                   .primaryTextTheme
                                   .headline6

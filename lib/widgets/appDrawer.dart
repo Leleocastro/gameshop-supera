@@ -31,22 +31,22 @@ class AppDrawer extends StatelessWidget {
               );
             },
           ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: Text('Gerenciar Produtos'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(
-                AppRoutes.PRODUCTS,
-              );
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Sair'),
-            onTap: () {},
-          ),
+          // Divider(),
+          // ListTile(
+          //   leading: Icon(Icons.edit),
+          //   title: Text('Gerenciar Produtos'),
+          //   onTap: () {
+          //     Navigator.of(context).pushReplacementNamed(
+          //       AppRoutes.PRODUCTS,
+          //     );
+          //   },
+          // ),
+          // Divider(),
+          // ListTile(
+          //   leading: Icon(Icons.logout),
+          //   title: Text('Sair'),
+          //   onTap: () {},
+          // ),
         ],
       ),
     );
